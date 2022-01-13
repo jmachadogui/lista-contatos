@@ -1,13 +1,15 @@
 
 import React from 'react';
 import {
+    Button,
   Text,
 } from 'react-native';
 
-const Intro = () => {
+const Intro = ({navigation}) => {
   return (
     <>
-      <Text>Intro</Text>
+      <Button title='Ir para Login' onPress={()=>navigation.navigate('Login')}>   
+      </Button>
     </>
   );
 };

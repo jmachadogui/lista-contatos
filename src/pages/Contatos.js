@@ -1,13 +1,15 @@
 
 import React from 'react';
 import {
+    Button,
   Text,
 } from 'react-native';
 
-const Contatos = () => {
+const Contatos = ({navigation}) => {
   return (
     <>
-      <Text>Contatos</Text>
+       <Button title='Ver contato' onPress={()=>navigation.navigate('Contato')}>   
+      </Button>
     </>
   );
 };
