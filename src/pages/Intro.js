@@ -5,14 +5,16 @@ import {
   Text,
 } from 'react-native';
 import { ArrowUpCircle } from "react-native-feather";
+import If from '../atoms/If';
 import { Title } from '../atoms/styles';
+import H1 from '../atoms/H1';
 const Intro = ({navigation}) => {
   return (
     <>
-      <Button title='Ir para Login' onPress={()=>navigation.navigate('Login')}>   
-      </Button>
-      <Title>Titulo</Title>
-      <Text style={{fontFamily: 'Montserrat-Black', color:'black'}}>Texto teste</Text>
+      <If test={true}>
+        <Text style={{color:'red'}}>a</Text>
+      </If>
+      <H1>Aaaaaa</H1>
     </>
   );
 };
