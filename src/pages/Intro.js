@@ -9,15 +9,13 @@ import If from '../atoms/If';
 import { Title } from '../atoms/styles';
 import H1 from '../atoms/H1';
 import Texto from '../atoms/Texto';
+import Container from '../atoms/Container';
 const Intro = ({navigation}) => {
   return (
-    <>
-      <If test={true}>
-        <Text style={{color:'red'}}>a</Text>
-      </If>
-      <H1>Aaaaaa</H1>
-      <Texto>Faça login para acessar nossa plataforma</Texto>
-    </>
+    <Container alignItems='center'>
+      <H1>Bem-vindo! É hora de começar uma nova experiência</H1>
+      <Texto textAlign='center'>Para ter acesso a todas as funcionalidades que podemos oferecer, faça login ou crie uma nova conta.</Texto>
+    </Container>
   );
 };
 
