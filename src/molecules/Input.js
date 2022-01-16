@@ -16,7 +16,7 @@ const Input = (props) => {
         <>
             <Texto fontWeight={500} color='#142B5D'>{props.label}</Texto>
             <EntradaTexto 
-                onChangeText={(value) => {setValue(value);props.onChange(value)}}
+                onChangeText={(value) => {setValue(value);props.onChange(props.name, value)}}
                 value={value}
                 placeholder={props.placeholder} 
                 placeholderTextColor='#495057' 
