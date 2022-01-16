@@ -4,12 +4,12 @@ import {
     Button,
   Text,
 } from 'react-native';
-
+import Container from '../atoms/Container';
+import ListaContatos from '../templates/ListaContatos';
 const Contatos = ({navigation}) => {
   return (
     <>
-       <Button title='Ver contato' onPress={()=>navigation.navigate('Contato')}>   
-      </Button>
+      <ListaContatos />
     </>
   );
 };
