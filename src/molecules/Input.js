@@ -7,7 +7,7 @@ const EntradaTexto = styled.TextInput`
     width: 100%;
     padding:16px;
     height: 56px;
-    radius: 8px;
+    borderRadius: 8px;
 `
 const Input = (props) => {
     console.log('PROPS', props);
