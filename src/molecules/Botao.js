@@ -13,7 +13,8 @@ const Botao = (props) => {
                 flexDirection:'row',
                 // flex:1,
                 // width:'50%',
-                alignItems:'center'
+                alignItems:'center',
+                borderRadius:8
             }}
             onPress={()=>props.onPress()}
         >
