@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 import Container from "../atoms/Container";
 import Texto from "../atoms/Texto";
 import ItemContato from "../organisms/ItemContato";
@@ -18,7 +18,7 @@ const ListaContatos = (props) => {
         <Container justifyContent='flex-start'>
            <FlatList 
             data={contatos}
-            renderItem={(contato) => <ItemContato contato={contato.item}/>}
+            renderItem={(contato) => <View style={{marginTop:16}}><ItemContato contato={contato.item}/></View>}
             keyExtractor={contato => contato.id}
            />
         </Container>
