@@ -37,7 +37,7 @@ const api = {
                 Authorization: 'Bearer ' + token
             }
         })
-        return response;
+        return response.data;
     },
    
 }
