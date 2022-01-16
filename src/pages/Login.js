@@ -43,7 +43,6 @@ const Login = ({navigation}) => {
       <Input placeholder='Digite seu email' label='Email' name='email' value={infoLogin.email} onChange={(name, value)=>handleChange(name, value)}/>
       <Input placeholder='Digite sua senha' label='Senha' name='password' value={infoLogin.password} onChange={(name, value)=>handleChange(name, value)}/>
       <Botao title='Entrar' onPress={()=>logar()}/>
-      <Botao title='GET' onPress={()=>get()}/>
     
     </Container>
   );
