@@ -4,6 +4,7 @@ import { TouchableOpacity, View } from "react-native";
 import Card from "../atoms/Card";
 import Texto from "../atoms/Texto";
 import * as Icon from 'react-native-feather';
+import FormatUtil from '../util/FormatUtil';
 const ItemContato = (props) => {
     return (
         <View style={{flex:1}}>
@@ -20,7 +21,7 @@ const ItemContato = (props) => {
                 <View style={{marginTop:34, flexDirection:'row', justifyContent:'space-between'}}>
                     <View style={{flexDirection:'row', flex:1}}>
                         <Icon.Smartphone stroke={'#424242'} style={{marginRight:13}}/>
-                        <Texto>{props.contato.mobile}</Texto>
+                        <Texto>{FormatUtil.formatTelefone(props.contato.mobile)}</Texto>
                     </View>
                     <View style={{flex:1, alignItems:'flex-end'}}>
                         <TouchableOpacity onPress={()=>props.onDelete(props.contato)}>
