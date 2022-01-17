@@ -66,9 +66,9 @@ const Contato = ({route, navigation}) => {
   return (
     <Container justifyContent='flex-start' alignItems='center'>
       <Texto textAlign='center' width='80%'>Preencha as informações para cadastrar um novo contato</Texto>
-      <Input name='name' label='Nome Completo' value={contato.name} onChange={(name, value) => handleChange(name, value)}/>
-      <Input name='email' label='Email' value={contato.email} onChange={(name, value) => handleChange(name, value)}/>
-      <Input name='mobile' label='Celular' keyboardType='numeric' value={contato.mobile} onChange={(name, value) => handleChange(name, value)}/>
+      <Input name='name' placeholder='Digite o nome do contato' label='Nome Completo' value={contato.name} onChange={(name, value) => handleChange(name, value)}/>
+      <Input name='email' placeholder='Digite o email' label='Email' value={contato.email} onChange={(name, value) => handleChange(name, value)}/>
+      <Input format='telefone' name='mobile' placeholder='Digite o nome do celular' label='Celular' keyboardType='numeric' value={contato.mobile} onChange={(name, value) => handleChange(name, value)}/>
       <Botao title='Cadastrar Contato' onPress={()=>salvar()}/>
     </Container>
   );
