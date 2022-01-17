@@ -7,5 +7,6 @@ const Card = styled.View`
     borderRadius: 8px;
     flex: ${props => props.flex != null? props.flex:'none'};
     padding:16px;
+    background-color: #FFFFFF
 `
 export default Card;
