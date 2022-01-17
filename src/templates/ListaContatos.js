@@ -23,6 +23,9 @@ const ListaContatos = (props) => {
     function onRefresh(){
         carregarContatos()
     }
+    async function deleteContato(contato) {
+        console.log('DELETE CONTATO', contato);
+    }
     return (
         <Container justifyContent='flex-start'>
           <Botao title='Cadastrar Contato' onPress={()=>navigation.navigate('Contato')}/>
@@ -30,7 +33,10 @@ const ListaContatos = (props) => {
             data={contatos}
             renderItem={(contato) => (
                 <View style={{marginBottom:16}}>
-                    <ItemContato contato={contato.item} onEdit={(id) =>navigation.navigate('Contato', {id: id})}/>
+                    <ItemContato contato={contato.item} 
+                        onEdit={(id) =>navigation.navigate('Contato', {id: id})}
+                        onDelete={(contato) => deleteContato(contato)}
+                    />
                 </View>)
             }
             keyExtractor={contato => contato.id}

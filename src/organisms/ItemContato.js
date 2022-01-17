@@ -23,7 +23,9 @@ const ItemContato = (props) => {
                         <Texto>{props.contato.mobile}</Texto>
                     </View>
                     <View style={{flex:1, alignItems:'flex-end'}}>
-                        <Icon.Trash2 stroke={'#FC3333'}/>
+                        <TouchableOpacity onPress={()=>props.onDelete(props.contato)}>
+                            <Icon.Trash2 stroke={'#FC3333'}/>
+                        </TouchableOpacity>
                     </View>
                 </View>
          </Card>
