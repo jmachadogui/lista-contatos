@@ -1,13 +1,15 @@
 
 import React, { useState } from 'react';
 import {
+  Alert,
   Text,
 } from 'react-native';
 import Container from '../atoms/Container';
 import Texto from '../atoms/Texto';
 import Botao from '../molecules/Botao';
-import Input from '../molecules/Input'
-const Contato = () => {
+import Input from '../molecules/Input';
+import FormatUtil from '../util/FormatUtil';
+const Contato = ({navigation}) => {
   const [contato, setContato] = useState({
     name:'',
     email:'',
@@ -18,8 +20,26 @@ const Contato = () => {
     state[name] = value;
     setContato(state);
   }
+  function validaCamposOK(campoContato) {
+    let retorno = true;
+    if(FormatUtil.isEmpty(campoContato.name)){
+      Alert.alert('Aviso', 'O nome é uma informação obrigatória')
+      retorno = false
+    }
+    if(FormatUtil.isEmpty(campoContato.email)){
+      Alert.alert('Aviso', 'O email é uma informação obrigatória.')
+      retorno = false
+    }
+    if(FormatUtil.isEmpty(campoContato.mobile)){
+      Alert.alert('Aviso', 'O telefone é uma informação obrigatória.')
+      retorno = false
+    }
+    return retorno;
+  }
   function salvar(){
-    console.log(contato);
+    if(!validaCamposOK(contato)){
+      return;
+    }
   }
   return (
     <Container justifyContent='flex-start' alignItems='center'>
