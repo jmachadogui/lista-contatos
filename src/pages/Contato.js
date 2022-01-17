@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Alert,
   Text,
@@ -10,15 +10,31 @@ import Botao from '../molecules/Botao';
 import Input from '../molecules/Input';
 import api from '../util/api';
 import FormatUtil from '../util/FormatUtil';
-const Contato = ({navigation}) => {
+const Contato = ({route, navigation}) => {
   const [contato, setContato] = useState({
     name:'',
     email:'',
     mobile:''
   })
-  const handleChange = (name, value) => {
+  useEffect(()=>{
+    console.log(route.params);
+    if(route.params.id){
+      carregaContato()
+    }
+  },[])
+  async function carregaContato(){
+    console.log('ID', route.params.id);
+    let {id, name, email, mobile} = await api.request('GET', '/contacts/'+route.params.id);
+    let state = {id:id, name:name, email, mobile}
+    console.log('STATE',state);
+    setContato(state);
+
+  }
+  function handleChange(name, value){
+    console.log('handleChange', name, value);
     let state = contato;
     state[name] = value;
+    console.log('STATE', state);
     setContato(state);
   }
   function validaCamposOK(campoContato) {
@@ -42,7 +58,7 @@ const Contato = ({navigation}) => {
       return;
     }
     let type = contato.id == null? 'POST':'PUT';
-    let url = `/contacts${contato.id? '/'+id:''}`
+    let url = `/contacts${contato.id? '/'+contato.id:''}`
     let response = await api.request(type, url, contato)
     console.log('RESPONSE', response);
     navigation.goBack();
