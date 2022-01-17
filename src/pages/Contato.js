@@ -18,7 +18,7 @@ const Contato = ({route, navigation}) => {
   })
   useEffect(()=>{
     console.log(route.params);
-    if(route.params.id){
+    if(route.params && route.params.id){
       carregaContato()
     }
   },[])
