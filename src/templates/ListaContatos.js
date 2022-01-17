@@ -10,6 +10,7 @@ const ListaContatos = (props) => {
     const navigation = useNavigation();
     const [contatos, setContatos] = useState([]);
     const [isRefreshing, setRefreshing] = useState(false);
+    const [selectedId, setSelectedId] = useState(null);
     useEffect(() => {
         carregarContatos()
     },[])
@@ -24,12 +25,22 @@ const ListaContatos = (props) => {
         carregarContatos()
     }
     async function deleteContato(contato) {
-        console.log('DELETE CONTATO', contato);
+        let index;
+        let state = contatos;
+        state.map((c, idx) => {
+            if(c.id == contato.id)
+                index=idx;
+        })
+        let response = await api.request('DELETE', '/contacts/'+contato.id);
+        state.splice(index, 1);
+        setSelectedId(contato.id);
+        setContatos(state);
     }
     return (
         <Container justifyContent='flex-start'>
           <Botao title='Cadastrar Contato' onPress={()=>navigation.navigate('Contato')}/>
            <FlatList 
+            extraData={selectedId}
             data={contatos}
             renderItem={(contato) => (
                 <View style={{marginBottom:16}}>
