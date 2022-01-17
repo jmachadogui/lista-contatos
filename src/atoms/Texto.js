@@ -8,5 +8,6 @@ const Texto = styled.Text`
     width: ${props=> props.width != null? props.width:'100%'};
     fontWeight: ${props=> props.fontWeight != null? props.fontWeight:'500'};
     textAlign:${props=> props.textAlign != null? props.textAlign:'left'};
+    marginTop:${props=> props.marginTop != null? props.marginTop:'0px'};
 `
 export default Texto;
