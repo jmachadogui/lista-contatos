@@ -16,14 +16,14 @@ function Input  (props)  {
     const [maxLength, setMaxlength] = useState(null);
 
     useEffect(()=>{
-      
+        getMaxLength();
         if(!FormatUtil.isEmpty(props.value)){
             setValue(props.value)
         }
     },[props.value])
     function getMaxLength(){
         if(props.format == 'telefone')
-            setMaxlength(14);
+            setMaxlength(15);
         else if(props.maxLength != null)
             setMaxlength(props.maxLength)
     }
