@@ -13,7 +13,7 @@ const Modal = styled.Modal`
 `
 const ModalComponent = (props) => (
     <Modal transparent={true} visible={props.visible}>
-        <View style={{flex:1, justifyContent:'center', alignItems:'center', padding:16}}>
+        <View style={{flex:1, justifyContent:'center', alignItems:'center', padding:16, backgroundColor: 'rgba(0,0,0,0.35)'}}>
           {props.children}
         </View>
     </Modal>
