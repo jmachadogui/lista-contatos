@@ -10,9 +10,11 @@ import Contatos from './src/pages/Contatos';
 import Contato from './src/pages/Contato';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Toast from 'react-native-toast-message';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
+    <>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Intro' component={Intro} options={{headerShown: false}}/>
@@ -21,6 +23,8 @@ const App = () => {
         <Stack.Screen name='Contato' component={Contato}/>
       </Stack.Navigator>
     </NavigationContainer>
+    <Toast />
+    </>
   );
 };
 
