@@ -51,6 +51,11 @@ const Contato = ({route, navigation}) => {
       Alert.alert('Aviso', 'O telefone é uma informação obrigatória.')
       retorno = false
     }
+    if(campoContato.mobile.length != 11){
+      console.log(campoContato.mobile.length);
+      Alert.alert('Aviso', 'O telefone fornecido é inválido.')
+      return;
+    }
     return retorno;
   }
   async function salvar(){
