@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native";
 import styled from "styled-components";
 import Texto from "../atoms/Texto";
@@ -10,8 +10,11 @@ const EntradaTexto = styled.TextInput`
     borderRadius: 8px;
 `
 const Input = (props) => {
-    console.log('PROPS', props);
+    console.log('PROPS', props.value);
     const [value, setValue] = useState(props.value);
+    useEffect(()=>{
+        setValue(props.value)
+    },[props.value])
     return (
         <>
             <Texto fontWeight={500} color='#142B5D'>{props.label}</Texto>
