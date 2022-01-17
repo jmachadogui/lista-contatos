@@ -8,6 +8,7 @@ import Container from '../atoms/Container';
 import Texto from '../atoms/Texto';
 import Botao from '../molecules/Botao';
 import Input from '../molecules/Input';
+import api from '../util/api';
 import FormatUtil from '../util/FormatUtil';
 const Contato = ({navigation}) => {
   const [contato, setContato] = useState({
@@ -36,10 +37,15 @@ const Contato = ({navigation}) => {
     }
     return retorno;
   }
-  function salvar(){
+  async function salvar(){
     if(!validaCamposOK(contato)){
       return;
     }
+    let type = contato.id == null? 'POST':'PUT';
+    let url = `/contacts${contato.id? '/'+id:''}`
+    let response = await api.request(type, url, contato)
+    console.log('RESPONSE', response);
+    navigation.goBack();
   }
   return (
     <Container justifyContent='flex-start' alignItems='center'>
