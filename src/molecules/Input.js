@@ -13,12 +13,20 @@ const EntradaTexto = styled.TextInput`
 function Input  (props)  {
     console.log('PROPS', props.value);
     const [value, setValue] = useState(props.value);
+    const [maxLength, setMaxlength] = useState(null);
+
     useEffect(()=>{
+      
         if(!FormatUtil.isEmpty(props.value)){
             setValue(props.value)
         }
     },[props.value])
-
+    function getMaxLength(){
+        if(props.format == 'telefone')
+            setMaxlength(14);
+        else if(props.maxLength != null)
+            setMaxlength(props.maxLength)
+    }
     function handleChange(valor) {
         console.log('HANDLE CHANGE', valor);
         if(props.format == 'telefone'){
@@ -49,6 +57,7 @@ function Input  (props)  {
         <>
             <Texto fontWeight={500} color='#142B5D'>{props.label}</Texto>
             <EntradaTexto 
+                maxLength={maxLength}
                 onChangeText={(value) => {handleChange(value)}}
                 value={value}
                 placeholder={props.placeholder} 
@@ -56,7 +65,6 @@ function Input  (props)  {
                 color='#495057'
                 keyboardType={props.keyboardType}
             />
-            <TextInput />
         </>
     )
 }
