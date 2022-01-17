@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, RefreshControl, View } from "react-native";
 import Container from "../atoms/Container";
 import Texto from "../atoms/Texto";
 import Botao from "../molecules/Botao";
@@ -9,14 +9,20 @@ import api from '../util/api'
 const ListaContatos = (props) => {
     const navigation = useNavigation();
     const [contatos, setContatos] = useState([]);
+    const [isRefreshing, setRefreshing] = useState(false);
     useEffect(() => {
-        async function carregarContatos(){
-            let response = await api.request('GET', '/contacts');
-            console.log('CONTATOS', response);
-            setContatos(response)
-        }
         carregarContatos()
     },[])
+    async function carregarContatos(){
+        setRefreshing(true)
+        let response = await api.request('GET', '/contacts');
+        console.log('CONTATOS', response);
+        setRefreshing(false);
+        setContatos(response)
+    }
+    function onRefresh(){
+        carregarContatos()
+    }
     return (
         <Container justifyContent='flex-start'>
           <Botao title='Cadastrar Contato' onPress={()=>navigation.navigate('Contato')}/>
@@ -28,6 +34,7 @@ const ListaContatos = (props) => {
                 </View>)
             }
             keyExtractor={contato => contato.id}
+            refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh}/>}
            />
         </Container>
     )
