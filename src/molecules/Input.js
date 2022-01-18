@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TextInput } from "react-native";
+import { TextInput, View } from "react-native";
 import styled from "styled-components";
 import Texto from "../atoms/Texto";
 import FormatUtil from '../util/FormatUtil';
@@ -18,7 +18,7 @@ function Input  (props)  {
     useEffect(()=>{
         getMaxLength();
         if(!FormatUtil.isEmpty(props.value)){
-            setValue(props.value)
+            setValue(formatar(props.value))
         }
     },[props.value])
     function getMaxLength(){
