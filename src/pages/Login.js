@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import {
   Button,
   Text,
+  View,
 } from 'react-native';
 import { clearWarnings } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 import Container from '../atoms/Container';
@@ -37,12 +38,16 @@ const Login = ({navigation}) => {
      console.log(response.data);
   }
   return (
-    <Container justifyContent='flex-start' alignItems='center'>
-      <H1>Bem Vindo(a)!</H1>
-      <Texto width='80%' textAlign='center'>Faça login para acessar nossa plataforma</Texto>
-      <Input placeholder='Digite seu email' label='Email' name='email' value={infoLogin.email} onChange={(name, value)=>handleChange(name, value)}/>
-      <Input placeholder='Digite sua senha' label='Senha' name='password' value={infoLogin.password} onChange={(name, value)=>handleChange(name, value)}/>
-      <Botao title='Entrar' onPress={()=>logar()}/>
+    <Container justifyContent='flex-start' alignItems='center' paddingTop={24}
+     >
+        <H1>Bem Vindo(a)!</H1>
+        <Texto width='80%' marginTop='16px'textAlign='center'>Faça login para acessar nossa plataforma</Texto>
+        <View style={{flex:1,  width:'100%', paddingTop:44}}>
+          <Input placeholder='Digite seu email' label='Email' name='email' value={infoLogin.email} onChange={(name, value)=>handleChange(name, value)}/>
+          <Input placeholder='Digite sua senha' label='Senha' name='password' value={infoLogin.password} onChange={(name, value)=>handleChange(name, value)}/>
+          <Texto marginTop='8px' textAlign='right' fontSize='14px'>Problemas com login?</Texto>
+        </View>
+      <Botao marginBottom={54} title='Entrar' onPress={()=>logar()}/>
     
     </Container>
   );
