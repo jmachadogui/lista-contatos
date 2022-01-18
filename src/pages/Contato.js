@@ -66,7 +66,12 @@ const Contato = ({route, navigation}) => {
     let url = `/contacts${contato.id? '/'+contato.id:''}`
     let response = await api.request(type, url, contato)
     console.log('RESPONSE', response);
-    navigation.goBack();
+    let mensagem = type == 'POST'? 'Contato cadastrado com sucesso!':'Contato atualizado com sucesso!';
+    navigation.navigate({
+      name: 'Contatos',
+      params: { mensagemToast: mensagem },
+      merge: true,
+    });
   }
   return (
     <Container justifyContent='flex-start' alignItems='center'>
