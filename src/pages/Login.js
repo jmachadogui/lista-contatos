@@ -42,13 +42,14 @@ const Login = ({navigation}) => {
      >
         <H1>Bem Vindo(a)!</H1>
         <Texto width='80%' marginTop='16px'textAlign='center'>Faça login para acessar nossa plataforma</Texto>
-        <View style={{flex:1,  width:'100%', paddingTop:44}}>
-          <Input placeholder='Digite seu email' label='Email' name='email' value={infoLogin.email} onChange={(name, value)=>handleChange(name, value)}/>
-          <Input placeholder='Digite sua senha' label='Senha' name='password' value={infoLogin.password} onChange={(name, value)=>handleChange(name, value)}/>
+        <View style={{flex:1,  width:'100%', paddingTop:44, justifyContent:'space-between'}}>
+          <View>
+            <Input placeholder='Digite seu email' label='Email' name='email' value={infoLogin.email} onChange={(name, value)=>handleChange(name, value)}/>
+            <Input placeholder='Digite sua senha' label='Senha' name='password' value={infoLogin.password} onChange={(name, value)=>handleChange(name, value)}/>
           <Texto marginTop='8px' textAlign='right' fontSize='14px'>Problemas com login?</Texto>
-        </View>
-      <Botao marginBottom={54} title='Entrar' onPress={()=>logar()}/>
-    
+          </View>
+          <Botao marginBottom={54} title='Entrar' onPress={()=>logar()}/>
+      </View>
     </Container>
   );
 };
