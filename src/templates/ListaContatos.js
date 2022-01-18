@@ -19,6 +19,9 @@ const ListaContatos = (props) => {
     useEffect(() => {
         carregarContatos()
     },[])
+    useEffect(()=>{
+        carregarContatos()
+    },[props.idSalvo])
     async function carregarContatos(){
         setRefreshing(true)
         let response = await api.request('GET', '/contacts');

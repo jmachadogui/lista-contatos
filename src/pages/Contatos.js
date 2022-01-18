@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Button,
   Text,
@@ -11,16 +11,19 @@ import Toast from 'react-native-toast-message';
 
 const Contatos = ({route, navigation}) => {
   console.log('ROUTE', route)
+  const [idSalvo, setIdSalvo] = useState(null);
   useEffect(()=>{
     if(route.params != null){
       console.log(route.params.mensagemToast);
-      if(route.params.mensagemToast != null)
+      if(route.params.mensagemToast != null){
         Toast.show({type:'sucessoCadastro'})
+        setIdSalvo(route.params.contatoId)
+      }
     }
   },[route])
   return (
     <>
-      <ListaContatos />
+      <ListaContatos idSalvo={idSalvo}/>
     </>
   );
 };
