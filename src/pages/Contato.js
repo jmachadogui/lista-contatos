@@ -19,7 +19,10 @@ const Contato = ({route, navigation}) => {
   useEffect(()=>{
     console.log(route.params);
     if(route.params && route.params.id){
+      navigation.setOptions({title:'Atualizar contato'})
       carregaContato()
+    } else {
+      navigation.setOptions({title:'Cadastrar um novo contato'})
     }
   },[])
   async function carregaContato(){
