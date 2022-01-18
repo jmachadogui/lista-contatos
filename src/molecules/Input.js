@@ -55,7 +55,7 @@ function Input  (props)  {
     }
     return (
         <>
-            <Texto fontWeight={500} color='#142B5D'>{props.label}</Texto>
+            <Texto marginTop='24px' fontWeight={500} color='#142B5D'>{props.label}</Texto>
             <EntradaTexto 
                 maxLength={maxLength}
                 onChangeText={(value) => {handleChange(value)}}
