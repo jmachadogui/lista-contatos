@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TextInput, View } from "react-native";
+import { TextInput } from "react-native";
 import styled from "styled-components";
 import Texto from "../atoms/Texto";
 import FormatUtil from '../util/FormatUtil';
@@ -55,7 +55,7 @@ function Input  (props)  {
     }
     return (
         <>
-            <Texto marginTop='24px' fontWeight={500} color='#142B5D'>{props.label}</Texto>
+            <Texto marginTop={props.marginTop!=null? props.marginTop+'px':'24px'} fontWeight={500} color='#142B5D'>{props.label}</Texto>
             <EntradaTexto 
                 maxLength={maxLength}
                 onChangeText={(value) => {handleChange(value)}}
