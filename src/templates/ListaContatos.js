@@ -8,14 +8,14 @@ import Botao from "../molecules/Botao";
 import ModalBox from "../molecules/ModalBox";
 import ConfirmPanel from "../organisms/ConfirmPanel";
 import ItemContato from "../organisms/ItemContato";
-import api from '../util/api'
+import api from '../util/api';
 const ListaContatos = (props) => {
     const navigation = useNavigation();
     const [contatos, setContatos] = useState([]);
     const [isRefreshing, setRefreshing] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
     const [contatoId, setContatoId] = useState(null);
-    const [isConfirmDelete, setConfirmDelete] = useState(true);
+    const [isConfirmDelete, setConfirmDelete] = useState(false);
     useEffect(() => {
         carregarContatos()
     },[])
