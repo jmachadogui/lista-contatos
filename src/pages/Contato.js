@@ -82,12 +82,12 @@ const Contato = ({route, navigation}) => {
   return (
     <Container justifyContent='flex-start' alignItems='center' paddingTop={32}>
       <Texto textAlign='center' width='80%'>{mensagem}</Texto>
-      <View style={{flex:1, width:'100%'}}>
-        <Input marginTop={48} name='name' placeholder='Digite o nome do contato' label='Nome Completo' value={contato.name} onChange={(name, value) => handleChange(name, value)}/>
-        <Input marginTop={48} name='email' placeholder='Digite o email' label='Email' value={contato.email} onChange={(name, value) => handleChange(name, value)}/>
-        <Input marginTop={48} format='telefone' name='mobile' placeholder='Digite o nome do celular' label='Celular' keyboardType='numeric' value={contato.mobile} onChange={(name, value) => handleChange(name, value)}/>
-      </View>
-      <View style={{alignSelf:'flex-end', paddingBottom:52}}>
+      <View style={{flex:1, width:'100%', justifyContent:'space-between', paddingBottom:32}}>
+        <View>
+          <Input marginTop={48} name='name' placeholder='Digite o nome do contato' label='Nome Completo' value={contato.name} onChange={(name, value) => handleChange(name, value)}/>
+          <Input marginTop={48} name='email' placeholder='Digite o email' label='Email' value={contato.email} onChange={(name, value) => handleChange(name, value)}/>
+          <Input marginTop={48} format='telefone' name='mobile' placeholder='Digite o nome do celular' label='Celular' keyboardType='numeric' value={contato.mobile} onChange={(name, value) => handleChange(name, value)}/>
+        </View>
         <Botao title='Cadastrar Contato' onPress={()=>salvar()}/>
       </View>
     </Container>
