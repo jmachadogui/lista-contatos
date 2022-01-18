@@ -69,7 +69,7 @@ const Contato = ({route, navigation}) => {
     let mensagem = type == 'POST'? 'Contato cadastrado com sucesso!':'Contato atualizado com sucesso!';
     navigation.navigate({
       name: 'Contatos',
-      params: { mensagemToast: mensagem },
+      params: { mensagemToast: mensagem, contatoId: response.id },
       merge: true,
     });
   }
