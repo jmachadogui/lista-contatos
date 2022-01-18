@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Alert,
   Text,
+  View,
 } from 'react-native';
 import Container from '../atoms/Container';
 import Texto from '../atoms/Texto';
@@ -16,11 +17,13 @@ const Contato = ({route, navigation}) => {
     email:'',
     mobile:''
   })
+  const [mensagem, setMensagem] = useState('Preencha as informações para cadastrar um novo contato');
   useEffect(()=>{
     console.log(route.params);
     if(route.params && route.params.id){
-      navigation.setOptions({title:'Atualizar contato'})
-      carregaContato()
+      navigation.setOptions({title:'Atualizar contato'});
+      setMensagem('Faça as alterções necessárias e ao terminar salve seu contato');
+      carregaContato();
     } else {
       navigation.setOptions({title:'Cadastrar um novo contato'})
     }
@@ -77,12 +80,16 @@ const Contato = ({route, navigation}) => {
     });
   }
   return (
-    <Container justifyContent='flex-start' alignItems='center'>
-      <Texto textAlign='center' width='80%'>Preencha as informações para cadastrar um novo contato</Texto>
-      <Input name='name' placeholder='Digite o nome do contato' label='Nome Completo' value={contato.name} onChange={(name, value) => handleChange(name, value)}/>
-      <Input name='email' placeholder='Digite o email' label='Email' value={contato.email} onChange={(name, value) => handleChange(name, value)}/>
-      <Input format='telefone' name='mobile' placeholder='Digite o nome do celular' label='Celular' keyboardType='numeric' value={contato.mobile} onChange={(name, value) => handleChange(name, value)}/>
-      <Botao title='Cadastrar Contato' onPress={()=>salvar()}/>
+    <Container justifyContent='flex-start' alignItems='center' paddingTop={32}>
+      <Texto textAlign='center' width='80%'>{mensagem}</Texto>
+      <View style={{flex:1, width:'100%'}}>
+        <Input marginTop={48} name='name' placeholder='Digite o nome do contato' label='Nome Completo' value={contato.name} onChange={(name, value) => handleChange(name, value)}/>
+        <Input marginTop={48} name='email' placeholder='Digite o email' label='Email' value={contato.email} onChange={(name, value) => handleChange(name, value)}/>
+        <Input marginTop={48} format='telefone' name='mobile' placeholder='Digite o nome do celular' label='Celular' keyboardType='numeric' value={contato.mobile} onChange={(name, value) => handleChange(name, value)}/>
+      </View>
+      <View style={{alignSelf:'flex-end', paddingBottom:52}}>
+        <Botao title='Cadastrar Contato' onPress={()=>salvar()}/>
+      </View>
     </Container>
   );
 };
